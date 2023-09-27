@@ -1,0 +1,49 @@
+.login {
+    width: 35%;
+    border: 1.5px solid rgb(15, 122, 113);
+    margin: auto;
+    padding-bottom: 20px;
+    margin-top: 15px;
+    border-radius: 3px;
+    padding: 29px;
+    background-color: rgb(147, 193, 193);
+}
+
+.input {
+    width: 100%;
+    padding: 7px;
+    font-size: 18px;
+    outline: none;
+
+}
+
+.btn {
+    width: 100%;
+    padding: 9px;
+}
+
+input.ng-invalid.ng-touched {
+    border-color: red;
+}
+
+input.ng-valid {
+    border-color: blue;
+}
+
+.help-bpx {
+    color: red;
+}
+
+table {
+    width: 50%;
+
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin: auto;
+}
+
+th,
+td {
+    border: 1px solid red;
+    padding: 10px;
+}

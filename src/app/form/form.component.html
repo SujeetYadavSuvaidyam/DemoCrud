@@ -1,0 +1,94 @@
+<!-- <div>
+    <h1> Driven Form Component</h1>
+</div>
+<div>
+    <form #regForm="ngForm" (ngSubmit)='Register(regForm)'>
+        <div class="login">
+            <h3 style="text-align: center;">Login Form</h3>
+            <div class="input_div">
+                <label for="name">Name</label>
+                <input type="text" class="input" name="name"   required ngModel #name="ngModel" ngModel>
+                <span class="help-bpx" *ngIf="name.touched && !name.valid  ">Please enter your name</span>
+            </div>
+            <div class="input_div" style="margin-top: 10px;">
+                <label for="email">Email</label>
+                <input type="text" class="input" name="email" email required #email="ngModel" ngModel>
+                <span class="help-bpx" *ngIf="email.touched && !email.valid">Please enter your valid email</span>
+            </div>
+            <div class="input_div" style="margin-top: 10px;">
+                <label for="password">Password</label>
+                <input type="text" class="input" required name="password" ngModel #password="ngModel" ngModel>
+                <span class="help-bpx" *ngIf="password.touched && !password.valid">Please enter your name</span>
+            </div>
+
+            <button [disabled]="!regForm.valid" type="submit" class="btn" style="margin-top: 10px;">Submit</button>
+        </div>
+    </form>
+</div> -->
+
+<div style="margin-top: 10px;">
+    <h1>ReactiveForm Templete</h1>
+    <form [formGroup]="singnupForm" (ngSubmit)='index > -1 ? UpdateValue(singnupForm): PostData(singnupForm)'>
+        <div class="login">
+            <h3 style="text-align: center;">Login Form</h3>
+            <div class="input_div">
+                <label for="name">Name</label>
+                <input type="text" value="name" class="input" formControlName="name">
+                <!-- <span *ngIf="singnupForm.controls?.name?.errors?.required">Error</span> -->
+                <p c *ngIf="singnupForm.controls['name'].hasError('required')  && singnupForm.controls['name'].touched">
+                    Name is required </p>
+                <p c *ngIf="singnupForm.controls['name'].hasError('pattern')">
+                    Only characters </p>
+                <span *ngIf="singnupForm.controls['name'].hasError('minlength')">
+                    Your name must be at least 2 characters long.
+                </span>
+                <span *ngIf="singnupForm.controls['name'].hasError('maxlength')">
+                    Your name must be at least 20 characters long.
+                </span>
+            </div>
+            <div class="input_div" style="margin-top: 10px;">
+                <label for="email">Email</label>
+                <input type="text" class="input" formControlName="email">
+                <p *ngIf="singnupForm.controls['email'].hasError('required')  && singnupForm.controls['email'].touched">
+                    Email is required </p>
+
+                <!-- <span class="help-bpx" *ngIf="email.touched && !email.valid">Please enter your valid email</span> -->
+            </div>
+            <div class="input_div" style="margin-top: 10px;">
+                <label for="password">Password</label>
+                <input type="text" class="input" formControlName="password">
+                <!-- <span class="help-bpx" *ngIf="password.touched && !password.valid">Please enter your name</span> -->
+            </div>
+            <div>
+
+            </div>
+            <input type="submit" [disabled]="!singnupForm.valid" value="{{index > -1 ? 'Update Data':'Post Data'}}" class="btn"
+                style="margin-top: 10px;">
+
+        </div>
+    </form>
+    <br>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr *ngFor="let person of data;let i=index" style="text-align: center;">
+            <td>{{i+1}}</td>
+            <td>{{person.name}}</td>
+            <td>{{person.email}}</td>
+            <td>{{person.password}}</td>
+            <td><button (click)="Update(i)">Edit</button></td>
+            <td><button (click)="Delete(i)">delete</button></td>
+        </tr>
+    </table>
+
+    <h3>Patch Method</h3>
+    <button (click)="FillDAta()">FillData</button>
+
+
+</div>
